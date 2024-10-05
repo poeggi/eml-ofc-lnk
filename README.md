@@ -1,10 +1,12 @@
 # Em(ai)l-o(b)f(us)c(ated)-l(i)nk
 
 ## Abstract
-A simplistic Java-script module to create an Email-link (mailto:) with an arbitrary Email address on your website, in privacy protected way.
+A simplistic Java-script module to create an Email-link (mailto:) with an arbitrary Email address on your website, in a privacy protected way.
 
-The Email in the link created cannot be ready by a static analysis tool or a simple passive contents parser, can not be matched by simple regular expressions etc.  
+The script creates an Email link that cannot be ready by a static analysis tool or a simple passive contents parser, can not be matched by simple regular expressions etc.  
 Furthermore, the Email address will also not be indexed by search engines nor will it be saved by e.g. the Internet Wayback Machine (aka Internet Archive).
+
+The script does set up a hook on an object that creates the link on the fly. 
 
 Works for mobile and desktop clients, in all major browsers. Code is CSP-safe and strict.
 
