@@ -11,26 +11,26 @@ Works for mobile and desktop clients, in all major browsers. Code is CSP-safe an
 
 ## How to use
 1. download and store this script on your web-server, under a path relative to your java-scripts  
-   (e.g. "/scripts/eml-ofc-lnk/eml-ofc-lnk.mjs")
+   (e.g. under "/scripts/eml-ofc-lnk/eml-ofc-lnk.mjs")
 
-2. in your HTML/website, mark an element with a unique ID, this element will later be the link
-   (e.g. an anchor, like: "<a id="contact-link" href=".." title="A nice title">")
+2. in your HTML/website, mark an element with a unique ID, this element will later be the link  
+   (e.g. an anchor, like: ```<a id="contact-link" href=".." title="A nice title">```)
   
 3. choose or create a java-script in your website that will call this module,  
    (IMPORTANT: also call your own script also as module, otherwise it will not work (!):  
-     <script type="module" src='/scripts/init.js'></script>)
+    ```<script type="module" src='/scripts/init.js'></script>```)
 
 5. in your java-script, include a reference / import of this modul  
-   ("import {registerContact, isAgent} from './eml-ofc-lnk/eml-ofc-lnk.mjs';")
+   (```import {registerContact, isAgent} from './eml-ofc-lnk/eml-ofc-lnk.mjs';```)
 
-6. call the "isAgent()" function in your java-script to initialize  
+6. call the ```isAgent()``` function in your java-script to initialize  
    (optional for now)
 
-7. call the "registerContact()" function to initialize.  
-   You need three parameters to be set according to your needs:
-     - the ID of the HTML element to change  
-     - the email username (the part of an Email address preceding the @) in clear text
-     - the obfuscated email domain (everything after the @) base64 encoded string (btoa)
+7. call the ```registerContact()``` function to initialize.  
+   You need three (3) parameters, set them according to your needs:
+     - the **ID** of the HTML element to change  
+     - the email **username** (the part of an Email address preceding the @) in clear text
+     - the obfuscated email **domain** (everything after the @) base64 encoded string (btoa)
 
 8. enjoy
 
