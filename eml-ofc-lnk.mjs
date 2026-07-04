@@ -37,6 +37,8 @@ export function registerContact(elementID, username, obf_domain) {
 	/* register handler that set link just in time (for mobile and desktop) */
 	docLink.addEventListener('touchstart', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
 	docLink.addEventListener('mouseover', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
+	/* keyboard navigation (tab to link) has neither touch nor mouseover */
+	docLink.addEventListener('focus', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
 
 	/* set title (mouse hover tool tip), also to indicate init worked */
 	docLink.setAttribute('title', "Click to get in touch..");
