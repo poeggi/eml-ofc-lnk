@@ -4,42 +4,42 @@
 
 /* TODO: implement real detection of non-humans, more than just a decoy */
 export function isAgent() {
-	return false;
+    return false;
 }
 
 /* direct handover of parameters into a function registered as
    eventListener does not work, so we use this way (.bind) */
 const setDescrambledContactLink = function(username, obf_domain) {
-	if (isAgent()) {
-		return true; /* sic ;) */
-	} else {
-		var obf_link = "m"+String.fromCharCode(0x61)+"ilto\u003A";
+    if (isAgent()) {
+        return true; /* sic ;) */
+    } else {
+        var obf_link = "m"+String.fromCharCode(0x61)+"ilto\u003A";
 
-		var docLink = this;
+        var docLink = this;
 
-		if (docLink) {
-			docLink.setAttribute('href', obf_link + username + '@'
-			 + atob(obf_domain) + "?subject=Contact via website..");
-		}
-	}
+        if (docLink) {
+            docLink.setAttribute('href', obf_link + username + '@'
+             + atob(obf_domain) + "?subject=Contact via website..");
+        }
+    }
 }
 
 /* set the contact link in CSP compliant, yet mobile compatible way */
 export function registerContact(elementID, username, obf_domain) {
-	var docLink;
-	if (!(docLink = document.getElementById(elementID))) {
-		return
-	}
+    var docLink;
+    if (!(docLink = document.getElementById(elementID))) {
+        return
+    }
 
-	/* empty href and tap to avoid conflicts and races */
-	docLink.setAttribute('href', "");
+    /* empty href and tap to avoid conflicts and races */
+    docLink.setAttribute('href', "");
 
-	/* register handler that set link just in time (for mobile and desktop) */
-	docLink.addEventListener('touchstart', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
-	docLink.addEventListener('mouseover', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
-	/* keyboard navigation (tab to link) has neither touch nor mouseover */
-	docLink.addEventListener('focus', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
+    /* register handler that set link just in time (for mobile and desktop) */
+    docLink.addEventListener('touchstart', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
+    docLink.addEventListener('mouseover', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
+    /* keyboard navigation (tab to link) has neither touch nor mouseover */
+    docLink.addEventListener('focus', setDescrambledContactLink.bind(docLink, username, obf_domain), {once: true});
 
-	/* set title (mouse hover tool tip), also to indicate init worked */
-	docLink.setAttribute('title', "Click to get in touch..");
+    /* set title (mouse hover tool tip), also to indicate init worked */
+    docLink.setAttribute('title', "Click to get in touch..");
 }
